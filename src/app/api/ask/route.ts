@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     return Response.json({
-      Message: "Failed to request",
+      Message: error,
       status: 201,
     });
   }

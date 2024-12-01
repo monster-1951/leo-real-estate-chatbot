@@ -7,7 +7,7 @@ export const GetResponse = async (
   db: Db,
   openai: OpenAI,
   ASTRA_DB_COLLECTION: string,
-  type: Number
+  type: number
 ) => {
   console.log(type);
   console.log({ASTRA_DB_COLLECTION});
