@@ -1,5 +1,4 @@
 "use client";
-import { marked } from "marked";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { SiGoogleassistant } from "react-icons/si";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import Image from "next/image";
@@ -18,13 +17,6 @@ interface message {
   Model?: string;
 }
 
-const convertMarkdownToHTML = async (markdownText: string) => {
-  // Convert markdown to HTML using marked
-  const htmlContent = await marked(markdownText);
-
-  return htmlContent;
-};
-
 const samples = [
   "What amenities are available with the properties in Banjara Hills?",
   "I want to buy a villa with a large lawn and a swimming pool.",
@@ -33,20 +25,7 @@ const samples = [
   "Can foreigners buy property in Hyderabad?",
   "How can I calculate my home loan eligibility?",
 ];
-const markdownText = `
-# Hello World
 
-This is a **Markdown** example!
-
-- Item 1
-- Item 2
-- Item 3
-
-[Click here](https://example.com) for more info.
-`;
-
-// const htmlOutput =await convertMarkdownToHTML(markdownText);
-// console.log(htmlOutput);
 export default function Home() {
   const LoadingText = "Please Wait";
   const [Loading, setLoading] = useState(false);
@@ -59,13 +38,13 @@ export default function Home() {
     await axios
       .post("/api/ask", { User_Input: query })
       .then(async (res) => {
-        const data = await convertMarkdownToHTML(res.data)
-        console.log({data})
         setChat((prevMessages: message[]) => {
           const updatedArray = [
             ...prevMessages.slice(0, -1),
-            { Model: data },
+            { Model: res.data },
           ];
+          console.log(Chat)
+          console.log(res.data);
           return updatedArray;
         });
         setLoading(false);
@@ -164,13 +143,14 @@ export default function Home() {
               <div key={index} className="w-full p-2 flex h-fit">
                 <div className="max-w-[80%] w-fit  rounded-xl  p-5 flex text-wrap overflow-x-auto ModelMessage">
                   <SiGoogleassistant className=" rounded-xl min-w-fit mr-2 mt-1 " />
-                  <Markdown
+                  <ReactMarkdown
                     className={"flex-col"}
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
                   >
                     {message.Model}
-                  </Markdown>
+                    
+                  </ReactMarkdown>
                 </div>
               </div>
             );

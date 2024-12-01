@@ -51,50 +51,53 @@ export const GetResponse = async (
     docContext = JSON.stringify(docsMap);
           // console.log({docContext})
     
-    // const templateContent = `content:${system_prompt}
+    const templateContent = `content:${system_prompt}
           
-    // ----------------------------
-    // START CONTEXT
-    // ${docContext}
-    // END CONTEXT
-    // ----------------------------
-    // QUESTION:${input}
-    // ----------------------------`;
+    ----------------------------
+    START CONTEXT
+    ${docContext}
+    END CONTEXT
+    ----------------------------
+    QUESTION:${input}
+    ----------------------------`;
 
-    // const stream = await openai.chat.completions.create({
-    //   model: "gpt-3.5-turbo",
-    //   messages: [
-    //     {
-    //       role: "system",
-    //       content: templateContent,
-    //     },
-    //     {
-    //       role: "user",
-    //       content: input,
-    //     },
-    //   ],
-    //   stream: true,
-    // });
+    const stream = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: templateContent,
+        },
+        {
+          role: "user",
+          content: input,
+        },
+      ],
+      stream: true,
+    });
 
-    // let fullResponse = ""; // Initialize an empty string to accumulate the response
+    let fullResponse = ""; // Initialize an empty string to accumulate the response
 
-    // // Iterate through the stream and accumulate the response
-    // for await (const chunk of stream) {
-    //   const content = chunk.choices[0]?.delta?.content || "";
-    //   fullResponse += content; // Append the chunk to the full response string
-    // }
-    // return fullResponse
+    // Iterate through the stream and accumulate the response
+    for await (const chunk of stream) {
+      const content = chunk.choices[0]?.delta?.content || "";
+      fullResponse += content; // Append the chunk to the full response string
+    }
+    return fullResponse
 
-    return `# Hello World
+//     return `# Welcome to Leo Real Estates
 
-    This is a **Markdown** example!
-    
-    - Item 1
-    - Item 2
-    - Item 3
-    
-    [Click here](https://example.com) for more info.
-    `
+// Leo Real Estates offers the best properties in prime locations. 
+
+// ## Services Offered:
+// - **Buying and Selling Properties**
+// - Property Rentals
+// - Property Management
+
+// ### Contact Us
+// - Email: contact@leorealestates.com
+// - Phone: +123 456 7890
+// `
      // Return the accumulated response once the
   } catch (error) {
     console.log("Error querying db...", error);
