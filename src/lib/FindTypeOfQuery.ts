@@ -1,4 +1,4 @@
-export const routeQuery = (userQuery: string): Number => {
+export const routeQuery = (userQuery: string): number => {
 
   const propertyKeywords: string[] = [
    "sr nagar", "banjara hills", "chanda nagar", "attapur", "kondapur",
@@ -50,7 +50,7 @@ export const routeQuery = (userQuery: string): Number => {
     return { propertyScore, faqScore };
 }
 
-function classifyQueryByScore(query: string): Number {
+function classifyQueryByScore(query: string): number {
   const { propertyScore, faqScore } = calculateQueryScores(query);
 
   console.log(`Property Score: ${propertyScore}`);
