@@ -1,4 +1,5 @@
 "use client";
+import { marked } from "marked";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,13 @@ interface message {
   Model?: string;
 }
 
+const convertMarkdownToHTML = async (markdownText: string) => {
+  // Convert markdown to HTML using marked
+  const htmlContent = await marked(markdownText);
+
+  return htmlContent;
+};
+
 const samples = [
   "What amenities are available with the properties in Banjara Hills?",
   "I want to buy a villa with a large lawn and a swimming pool.",
@@ -25,6 +33,20 @@ const samples = [
   "Can foreigners buy property in Hyderabad?",
   "How can I calculate my home loan eligibility?",
 ];
+const markdownText = `
+# Hello World
+
+This is a **Markdown** example!
+
+- Item 1
+- Item 2
+- Item 3
+
+[Click here](https://example.com) for more info.
+`;
+
+// const htmlOutput =await convertMarkdownToHTML(markdownText);
+// console.log(htmlOutput);
 export default function Home() {
   const LoadingText = "Please Wait";
   const [Loading, setLoading] = useState(false);
@@ -37,10 +59,12 @@ export default function Home() {
     await axios
       .post("/api/ask", { User_Input: query })
       .then(async (res) => {
+        const data = await convertMarkdownToHTML(res.data)
+        console.log({data})
         setChat((prevMessages: message[]) => {
           const updatedArray = [
             ...prevMessages.slice(0, -1),
-            { Model: res.data },
+            { Model: data },
           ];
           return updatedArray;
         });
@@ -66,7 +90,11 @@ export default function Home() {
     setInputValue(event.target.value);
   };
 
-  const FaqClick = async (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+  const FaqClick = async (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.TouchEvent<HTMLButtonElement>
+  ) => {
     setLoading(true);
     const Faq = event.currentTarget.innerText;
     console.log(Faq);
@@ -84,10 +112,9 @@ export default function Home() {
 
   useEffect(() => {
     if (chatBoxRef.current) {
-      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight; 
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }
-  }, [Chat]); 
-
+  }, [Chat]);
 
   return (
     <div className=" sm:w-[60%] md:w-[50%] xl:w-[30%] mx-auto h-screen ">
@@ -105,6 +132,7 @@ export default function Home() {
             src={HeroImage}
             height={1000}
             width={1000}
+            priority={false}
             className="mx-auto rounded-xl w-[80%]"
           />
           <div className="grid grid-flow-row grid-cols-2 space-y-2">
@@ -163,5 +191,3 @@ export default function Home() {
     </div>
   );
 }
-
-
