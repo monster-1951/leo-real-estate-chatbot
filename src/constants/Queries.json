@@ -1,0 +1,86 @@
+{
+  "property_queries": [
+    {
+      "query": "Tell me about the property in Banjara Hills.",
+      "response": "The property in Banjara Hills is a 3BHK apartment with modern interiors, listed for sale at ₹9,500,000. It has an area of 1200 sq. ft. and offers amenities like parking, gym, and a pool."
+    },
+    {
+      "query": "What is the price of the property in Jubilee Hills?",
+      "response": "The property in Jubilee Hills is an independent house with 4 bedrooms and 3 bathrooms. It is listed for sale at ₹25,000,000 and has a spacious garden and garage."
+    },
+    {
+      "query": "Is there a property available for rent in Gachibowli?",
+      "response": "Yes, there is a fully furnished 2BHK apartment in Gachibowli available for rent at ₹45,000 per month. It has amenities like security and power backup."
+    },
+    {
+      "query": "What type of property is available in Madhapur?",
+      "response": "In Madhapur, there is a 2BHK apartment available for sale at ₹6,000,000. The property has an area of 1000 sq. ft. and comes with amenities like a gym and parking."
+    },
+    {
+      "query": "How much is the villa in Kondapur?",
+      "response": "The premium 5BHK villa in Kondapur is priced at ₹35,000,000. It has a total area of 4000 sq. ft. and offers luxurious amenities such as a pool, garden, and clubhouse."
+    },
+    {
+      "query": "What is the status of the property in Kukatpally?",
+      "response": "The property in Kukatpally is a 3BHK independent house listed for sale at ₹12,000,000. It has a garden and parking space."
+    },
+    {
+      "query": "Can I find a property in Secunderabad for rent?",
+      "response": "Yes, there is a 2BHK apartment in Secunderabad available for rent at ₹35,000 per month. It has parking and security features."
+    },
+    {
+      "query": "How many bedrooms does the property in Manikonda have?",
+      "response": "The property in Manikonda is a 3BHK apartment, available for sale at ₹7,500,000. It comes with amenities like a pool, gym, and parking."
+    },
+    {
+      "query": "What amenities are included with the property in LB Nagar?",
+      "response": "The 2BHK house in LB Nagar comes with a garden and parking. It is listed for sale at ₹9,000,000."
+    },
+    {
+      "query": "What is the area of the apartment in Hitech City?",
+      "response": "The 3BHK apartment in Hitech City is available for rent at ₹55,000 per month. It has a total area of 1500 sq. ft. and offers amenities like security, power backup, and a gym."
+    }
+  ],
+  "faq_queries": [
+    {
+      "question": "What is the minimum down payment for properties in Hyderabad?",
+      "answer": "The minimum down payment is typically 10-20% of the property's price."
+    },
+    {
+      "question": "What documents are required to register a property?",
+      "answer": "You will need the sale deed, encumbrance certificate, property tax receipts, and identity proof."
+    },
+    {
+      "question": "Which areas in Hyderabad are best for IT professionals?",
+      "answer": "Gachibowli, Hitech City, and Madhapur are popular areas for IT professionals due to proximity to IT parks."
+    },
+    {
+      "question": "What are the stamp duty rates in Hyderabad?",
+      "answer": "Stamp duty rates in Hyderabad are approximately 6% of the property's value."
+    },
+    {
+      "question": "Are there any tax benefits on home loans in Hyderabad?",
+      "answer": "Yes, under Section 80C and Section 24, you can claim tax benefits on the principal and interest of a home loan."
+    },
+    {
+      "question": "Can NRIs buy property in Hyderabad?",
+      "answer": "Yes, NRIs can buy residential or commercial property in Hyderabad, but agricultural land is restricted."
+    },
+    {
+      "question": "What are the top schools near Jubilee Hills?",
+      "answer": "Top schools include Oakridge International School and Jubilee Hills Public School."
+    },
+    {
+      "question": "What is the average rental yield in Hitech City?",
+      "answer": "The average rental yield in Hitech City is around 3-4% per year."
+    },
+    {
+      "question": "What safety measures should I look for in a rental apartment?",
+      "answer": "Ensure the apartment has proper security, fire safety measures, and a reliable power backup system."
+    },
+    {
+      "question": "How can I verify the authenticity of property documents?",
+      "answer": "You can consult a lawyer and verify documents like the sale deed, title deed, and encumbrance certificate at the local sub-registrar's office."
+    }
+  ]
+}
